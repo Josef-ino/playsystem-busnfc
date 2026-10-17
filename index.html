@@ -19,58 +19,93 @@
   }
 
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
   html, body {
-    margin: 0; padding: 0; width: 100%; height: 100%;
-    overflow: hidden; background: var(--bg); color: var(--text);
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text);
     font-family: "Segoe UI", Arial, sans-serif;
   }
+
   body { padding: 6px; }
 
   .app {
-    width: 100%; height: 100%;
-    max-width: 1200px; margin: 0 auto;
-    display: flex; flex-direction: column; gap: 6px;
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   h1 {
-    margin: 0; color: var(--blue); text-align: center;
-    font-size: clamp(20px, 4.5vw, 32px); line-height: 1;
+    margin: 0;
+    color: var(--blue);
+    text-align: center;
+    font-size: clamp(20px, 4.5vw, 32px);
+    line-height: 1;
   }
 
   .subtitle {
-    margin: 0; text-align: center; color: var(--muted);
-    font-size: 10px; line-height: 1.15;
+    margin: 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.15;
   }
 
   .topbar {
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    flex: 0 0 auto;
   }
 
   .topcard {
-    background: var(--panel); border: 1px solid rgba(255,255,255,0.04);
-    border-radius: 12px; padding: 7px 8px; box-shadow: 0 0 12px rgba(0,170,255,0.08);
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 12px;
+    padding: 7px 8px;
+    box-shadow: 0 0 12px rgba(0,170,255,0.08);
     min-width: 0;
   }
   .topcard .label { font-size: 9px; color: var(--muted); margin-bottom: 3px; }
   .topcard .value {
-    font-size: clamp(12px, 2.7vw, 20px); font-weight: 800; color: var(--blue);
-    line-height: 1.05; word-break: break-word;
+    font-size: clamp(12px, 2.7vw, 20px);
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1.05;
+    word-break: break-word;
   }
 
   .topactions {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    flex: 0 0 auto;
   }
 
   .main {
-    flex: 1 1 auto; min-height: 0;
-    display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 6px;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 6px;
   }
 
   .card {
-    background: var(--panel); border-radius: 14px; padding: 8px;
+    background: var(--panel);
+    border-radius: 14px;
+    padding: 8px;
     border: 1px solid rgba(255,255,255,0.04);
     box-shadow: 0 0 14px rgba(0,170,255,0.08);
-    min-height: 0; overflow: hidden; display: flex; flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .section-title { font-size: 13px; margin: 0 0 5px; color: #fff; flex: 0 0 auto; }
@@ -79,79 +114,131 @@
   .field label { display: block; color: #aaa; margin-bottom: 3px; font-size: 9px; }
 
   .field input, .field select {
-    width: 100%; font-size: 13px; border: 2px solid var(--blue); border-radius: 11px;
-    padding: 8px 9px; background: #000; color: var(--blue); outline: none; appearance: none; min-height: 38px;
+    width: 100%;
+    font-size: 13px;
+    border: 2px solid var(--blue);
+    border-radius: 11px;
+    padding: 8px 9px;
+    background: #000;
+    color: var(--blue);
+    outline: none;
+    appearance: none;
+    min-height: 38px;
   }
 
   .compact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 
   .priceBox {
-    background: var(--panel2); border: 1px solid var(--border); border-radius: 11px;
-    padding: 7px 9px; margin-bottom: 6px; font-size: 11px; line-height: 1.3; color: #ddd;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 7px 9px;
+    margin-bottom: 6px;
+    font-size: 11px;
+    line-height: 1.3;
+    color: #ddd;
   }
   .priceBox strong { color: var(--green); font-size: 15px; }
 
   .amountWrap {
-    display: grid; grid-template-columns: 1fr 0.28fr; gap: 6px; margin-bottom: 6px;
+    display: grid;
+    grid-template-columns: 1fr 0.28fr;
+    gap: 6px;
+    margin-bottom: 6px;
   }
 
   #amountInput, #customPriceInput {
-    width: 100%; padding: 9px 9px; font-size: 21px; text-align: center; color: var(--blue);
-    background: #000; border: 2px solid var(--blue); border-radius: 11px; outline: none;
+    width: 100%;
+    padding: 9px 9px;
+    font-size: 21px;
+    text-align: center;
+    color: var(--blue);
+    background: #000;
+    border: 2px solid var(--blue);
+    border-radius: 11px;
+    outline: none;
   }
 
   .amountBtn {
-    border: none; border-radius: 11px; background: var(--panel2); color: var(--blue);
-    font-size: 16px; font-weight: 800; cursor: pointer; border: 1px solid var(--border);
+    border: none;
+    border-radius: 11px;
+    background: var(--panel2);
+    color: var(--blue);
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    border: 1px solid var(--border);
   }
 
-  #keypad {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;
-  }
-
-  .key, button.action, #startNFC {
-    min-height: 40px; border: none; border-radius: 11px; font-weight: 800; cursor: pointer;
-    transition: background .12s, transform .08s;
-  }
-  .key {
-    background: var(--blue); color: #000; font-size: 16px; box-shadow: 0 0 9px rgba(0,170,255,0.18);
-  }
   button.action, #startNFC {
-    background: var(--blue); color: #000; font-size: 12px; padding: 9px 7px;
+    min-height: 40px;
+    border: none;
+    border-radius: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background .12s, transform .08s;
+    background: var(--blue);
+    color: #000;
+    font-size: 12px;
+    padding: 9px 7px;
     box-shadow: 0 0 9px rgba(0,170,255,0.12);
   }
 
-  .key:active, button.action:active, #startNFC:active, .amountBtn:active { background: var(--blue2); transform: scale(0.98); }
+  button.action:active, #startNFC:active, .amountBtn:active {
+    background: var(--blue2);
+    transform: scale(0.98);
+  }
+
   #startNFC[disabled] { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
 
   #status {
-    margin-top: 6px; min-height: 38px; padding: 7px 9px; border-radius: 11px;
-    background: #000; border: 1px solid var(--border); font-size: 11px; line-height: 1.3; color: var(--muted);
+    margin-top: 6px;
+    min-height: 38px;
+    padding: 7px 9px;
+    border-radius: 11px;
+    background: #000;
+    border: 1px solid var(--border);
+    font-size: 11px;
+    line-height: 1.3;
+    color: var(--muted);
   }
   #status.info { color: var(--blue); }
   #status.success { color: var(--green); }
   #status.error { color: var(--red); }
 
   .rightGrid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6px; min-height: 0; flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    min-height: 0;
+    flex: 1 1 auto;
   }
 
   .mini-card {
-    background: var(--panel2); border: 1px solid var(--border); border-radius: 12px;
-    padding: 8px; min-height: 0; display: flex; flex-direction: column;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 8px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .mini-card h3 { margin: 0 0 5px; color: var(--blue); font-size: 12px; flex: 0 0 auto; }
 
-  .kv {
-    display: grid; grid-template-columns: 72px 1fr; gap: 4px 5px; font-size: 10px; line-height: 1.2;
-  }
-  .kv div:nth-child(odd) { color: #9aa; }
-
   #log {
-    margin-top: 6px; flex: 1 1 auto; min-height: 0; background: #000; border-radius: 11px;
-    padding: 7px; color: #cfcfcf; white-space: pre-wrap; font-size: 10px; line-height: 1.25;
-    border: 1px solid var(--border); overflow: auto;
+    margin-top: 6px;
+    flex: 1 1 auto;
+    min-height: 0;
+    background: #000;
+    border-radius: 11px;
+    padding: 7px;
+    color: #cfcfcf;
+    white-space: pre-wrap;
+    font-size: 10px;
+    line-height: 1.25;
+    border: 1px solid var(--border);
+    overflow: auto;
   }
 
   .hidden { display: none; }
@@ -172,15 +259,8 @@
     .section-title { font-size: 12px; }
     .field { margin-bottom: 5px; }
     .field input, .field select { font-size: 12px; min-height: 36px; padding: 7px 8px; }
-    .key, button.action, #startNFC, .amountBtn { min-height: 38px; }
+    button.action, #startNFC, .amountBtn { min-height: 38px; }
     .amountWrap { grid-template-columns: 1fr 0.28fr; }
-  }
-
-  @media (orientation: landscape) and (max-height: 500px) {
-    .subtitle { display: none; }
-    .topbar { grid-template-columns: 1fr 1fr 1fr; }
-    .main { grid-template-columns: 0.92fr 1.08fr; }
-    #log { max-height: 110px; }
   }
 </style>
 </head>
@@ -251,21 +331,6 @@
           <input id="amountInput" type="number" inputmode="numeric" placeholder="0" />
           <button class="amountBtn" onclick="clearInput()">C</button>
         </div>
-      </div>
-
-      <div id="keypad">
-        <button class="key" onclick="pressKey('1')">1</button>
-        <button class="key" onclick="pressKey('2')">2</button>
-        <button class="key" onclick="pressKey('3')">3</button>
-        <button class="key" onclick="pressKey('4')">4</button>
-        <button class="key" onclick="pressKey('5')">5</button>
-        <button class="key" onclick="pressKey('6')">6</button>
-        <button class="key" onclick="pressKey('7')">7</button>
-        <button class="key" onclick="pressKey('8')">8</button>
-        <button class="key" onclick="pressKey('9')">9</button>
-        <button class="key" onclick="backspace()">⌫</button>
-        <button class="key" onclick="pressKey('0')">0</button>
-        <button class="key" onclick="pressKey('00')">00</button>
       </div>
 
       <div id="status" class="info">Stiskněte „Zapnout NFC“.</div>
@@ -379,19 +444,6 @@ function updatePrice() {
   document.getElementById("ticketPrice").textContent = t.price + " Kč";
   document.getElementById("priceDetail").textContent = t.type === 4 ? `${t.zones} × ${t.perZone} Kč za pásmo` : (t.type === 5 ? "Vlastní cena" : TICKET_NAMES[t.type]);
 }
-function updateDisplay() {
-  document.getElementById("balance").textContent = cardLoaded ? card.balance + " Kč" : "?";
-  document.getElementById("viewUid").textContent = cardUid;
-  document.getElementById("viewBalance").textContent = cardLoaded ? card.balance + " Kč" : "-";
-  if (!cardLoaded) {
-    document.getElementById("viewTicket").textContent = "-";
-    document.getElementById("viewZones").textContent = "-";
-    document.getElementById("viewValidUntil").textContent = "-";
-    document.getElementById("viewLastPurchase").textContent = "-";
-    document.getElementById("viewLastTime").textContent = "-";
-    return;
-  }
-}
 
 async function initNFC() {
   if (!("NDEFReader" in window)) { setStatus("NFC není v tomto prohlížeči podporováno.", "error"); return; }
@@ -433,7 +485,7 @@ async function handleReading(event) {
       logMsg("Nová nebo neplatná karta — inicializována na 0 Kč.");
     }
     cardLoaded = true;
-    refreshView();
+    refreshTop();
     if (pendingAction) await runPendingAction();
     else setStatus("Karta načtena.", "success");
   } catch (e) {
@@ -444,18 +496,9 @@ async function handleReading(event) {
   }
 }
 
-function refreshView() {
+function refreshTop() {
   document.getElementById("balance").textContent = cardLoaded ? card.balance + " Kč" : "?";
-  document.getElementById("viewUid2")?.textContent = cardUid;
-  document.getElementById("viewBalance")?.textContent = cardLoaded ? card.balance + " Kč" : "-";
-  document.getElementById("viewTicket") && (document.getElementById("viewTicket").textContent = TICKET_NAMES[card.ticketType] || "Žádná");
-  document.getElementById("viewZones") && (document.getElementById("viewZones").textContent = card.zones ? String(card.zones) : "-");
-  document.getElementById("viewValidUntil") && (document.getElementById("viewValidUntil").textContent = card.ticketType ? minToStr(card.validUntilMin) : "-");
-  let last = LAST_KIND[card.lastKind] || "-";
-  if (card.lastKind === 1) last += ` ${card.lastAmount} Kč`;
-  if (card.lastKind === 2) last = (TICKET_NAMES[card.lastTicketType] || "Jízdenka") + (card.lastZones ? ` (${card.lastZones} p.)` : "") + ` ${card.lastAmount} Kč`;
-  document.getElementById("viewLastPurchase") && (document.getElementById("viewLastPurchase").textContent = last);
-  document.getElementById("viewLastTime") && (document.getElementById("viewLastTime").textContent = card.lastTimeMin ? minToStr(card.lastTimeMin) : "-");
+  document.getElementById("viewUid").textContent = cardUid;
 }
 
 async function runPendingAction() {
@@ -508,7 +551,6 @@ async function runPendingAction() {
       }
     }
   }
-  refreshView();
 }
 
 function startTopUp() {
@@ -529,20 +571,13 @@ function startVerify() {
   setStatus("Přiložte kartu k ověření jízdenky.", "info");
 }
 
-function pressKey(d) {
-  const i = document.getElementById("amountInput");
-  const current = i.value || "";
-  i.value = current === "0" ? String(d) : current + d;
-  i.focus();
-}
 function clearInput() { document.getElementById("amountInput").value = ""; }
-function backspace() { const i = document.getElementById("amountInput"); i.value = i.value.slice(0, -1); }
 
 document.getElementById("startNFC").addEventListener("click", initNFC);
 initZoneSelect();
 onTicketTypeChange();
 updatePrice();
-updateDisplay();
+refreshTop();
 logMsg("Aplikace spuštěna.");
 </script>
 </body>
