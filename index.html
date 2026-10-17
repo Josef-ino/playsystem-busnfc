@@ -232,7 +232,6 @@
 
   .hidden { display: none !important; }
 
-  /* Celá obrazovka pro ověření */
   #verifyOverlay {
     position: fixed;
     inset: 0;
@@ -293,7 +292,6 @@
   </div>
 </div>
 
-<!-- DOBÍT -->
 <div class="overlay" id="topupOverlay">
   <div class="panel">
     <div class="panelhead">
@@ -315,7 +313,6 @@
   </div>
 </div>
 
-<!-- KOUPIT -->
 <div class="overlay" id="buyOverlay">
   <div class="panel">
     <div class="panelhead">
@@ -369,6 +366,15 @@
       <button class="actionbtn" onclick="startBuy()">Pokračovat</button>
     </div>
   </div>
+</div>
+
+<div id="verifyOverlay" class="">
+  <div id="verifyIcon"></div>
+  <div id="verifyTitle"></div>
+  <div id="verifyTicket"></div>
+  <div id="verifyZones"></div>
+  <div id="verifyValid"></div>
+  <button id="verifyClose" onclick="closeVerify()">Zavřít</button>
 </div>
 
 <script>
@@ -603,7 +609,9 @@ async function runPendingAction() {
     } else {
       showVerify("bad", "✖", "NEPLATNÁ", ticket, zones, "Vypršela " + minToStr(card.validUntilMin));
     }
+    return;
   }
+
   refreshTop();
 }
 
@@ -621,9 +629,9 @@ function startBuy() {
   setStatus(`Přiložte kartu — nákup za ${t.price} Kč.`, "info");
 }
 function startVerify() {
-  pendingAction = "verify";
   closeTopUp();
   closeBuy();
+  pendingAction = "verify";
   setStatus("Přiložte kartu k ověření.", "info");
 }
 
@@ -632,14 +640,5 @@ initZoneSelect();
 onTicketTypeChange();
 refreshTop();
 </script>
-
-<div id="verifyOverlay" class="">
-  <div id="verifyIcon"></div>
-  <div id="verifyTitle"></div>
-  <div id="verifyTicket"></div>
-  <div id="verifyZones"></div>
-  <div id="verifyValid"></div>
-  <button id="verifyClose" onclick="closeVerify()">Zavřít</button>
-</div>
 </body>
 </html>
