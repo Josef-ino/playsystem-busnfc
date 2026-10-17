@@ -30,7 +30,10 @@
     font-family: "Segoe UI", Arial, sans-serif;
   }
 
-  body { padding: 8px; }
+  body {
+    overflow: hidden;
+    padding: 8px;
+  }
 
   .app {
     width: 100%;
@@ -49,7 +52,18 @@
     line-height: 1.1;
   }
 
-  .row2 {
+  .statusbar {
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: #000;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--blue);
+    min-height: 40px;
+  }
+
+  .toprow {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
@@ -60,46 +74,82 @@
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 8px 10px;
-    min-width: 0;
   }
+
   .topcard .label { font-size: 10px; color: var(--muted); margin-bottom: 2px; }
   .topcard .value {
     font-size: 18px;
     font-weight: 800;
     color: var(--blue);
     line-height: 1.1;
-    word-break: break-all;
+    word-break: break-word;
   }
-  .topcard .value.small { font-size: 12px; }
 
-  #status {
-    padding: 8px 10px;
-    border-radius: 12px;
-    background: #000;
-    border: 1px solid var(--border);
-    font-size: 13px;
-    line-height: 1.3;
-    color: var(--blue);
-    min-height: 38px;
+  .main-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
-  #status.info { color: var(--blue); }
-  #status.success { color: var(--green); }
-  #status.error { color: var(--red); }
 
-  button {
-    font-family: inherit;
+  .bigbtn {
+    min-height: 84px;
     border: none;
-    border-radius: 12px;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: 800;
+    cursor: pointer;
     background: var(--blue);
     color: #000;
-    font-size: 15px;
-    font-weight: 800;
-    min-height: 46px;
-    cursor: pointer;
-    transition: background .12s, transform .08s;
+    box-shadow: 0 0 14px rgba(0,170,255,0.18);
   }
-  button:active { background: var(--blue2); transform: scale(0.98); }
-  button[disabled] { opacity: .5; cursor: not-allowed; }
+
+  .bigbtn:active {
+    background: var(--blue2);
+    transform: scale(0.98);
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    background: var(--bg);
+    padding: 10px;
+  }
+
+  .overlay.show { display: flex; }
+
+  .panel {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+    flex: 1;
+  }
+
+  .panelhead {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .paneltitle {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--blue);
+  }
+
+  .panelsub {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+  }
 
   .card {
     background: var(--panel);
@@ -108,22 +158,34 @@
     padding: 10px;
   }
 
-  .field { margin-bottom: 8px; min-width: 0; }
+  .field { margin-bottom: 8px; }
   .field:last-child { margin-bottom: 0; }
-  .field label { display: block; color: #aaa; margin-bottom: 3px; font-size: 11px; }
 
-  .field input, .field select {
+  .field label {
+    display: block;
+    color: #aaa;
+    margin-bottom: 3px;
+    font-size: 11px;
+  }
+
+  .field input,
+  .field select {
     width: 100%;
     font-size: 17px;
     border: 2px solid var(--blue);
     border-radius: 12px;
-    padding: 8px 10px;
+    padding: 10px 12px;
     background: #000;
     color: var(--blue);
     outline: none;
     appearance: none;
-    -webkit-appearance: none;
-    min-height: 44px;
+    min-height: 46px;
+  }
+
+  .row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 
   .priceBox {
@@ -133,40 +195,74 @@
     padding: 8px 10px;
     font-size: 13px;
     color: #ddd;
-    margin-bottom: 8px;
   }
   .priceBox strong { color: var(--green); font-size: 20px; }
 
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  .actionbtn {
+    min-height: 56px;
+    border: none;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    background: var(--blue);
+    color: #000;
+  }
+
+  .actionbtn.secondary {
+    background: #333;
+    color: #fff;
+  }
+
+  .actionbtn:active {
+    background: var(--blue2);
+    transform: scale(0.98);
+  }
+
+  .actionbtn.secondary:active {
+    background: #444;
+  }
+
   .hidden { display: none !important; }
 
-  /* Celoobrazovkové ověření */
-  #overlay {
+  /* Celá obrazovka pro ověření */
+  #verifyOverlay {
     position: fixed;
     inset: 0;
-    z-index: 100;
+    z-index: 200;
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    padding: 24px;
     text-align: center;
+    padding: 20px;
+    color: #fff;
   }
-  #overlay.show { display: flex; }
-  #overlay.ok { background: #0b7a3b; }
-  #overlay.bad { background: #b3261e; }
-  #overlay.none { background: #444; }
-  #ovIcon { font-size: 90px; line-height: 1; }
-  #ovTitle { font-size: 34px; font-weight: 800; }
-  #ovTicket { font-size: 24px; font-weight: 700; }
-  #ovZones { font-size: 52px; font-weight: 800; }
-  #ovValid { font-size: 18px; opacity: .95; }
-  #ovClose {
-    margin-top: 18px;
+  #verifyOverlay.show { display: flex; }
+  #verifyOverlay.ok { background: #0b7a3b; }
+  #verifyOverlay.bad { background: #b3261e; }
+  #verifyOverlay.none { background: #444; }
+  #verifyIcon { font-size: 92px; line-height: 1; }
+  #verifyTitle { font-size: 34px; font-weight: 800; margin-top: 8px; }
+  #verifyTicket { font-size: 24px; font-weight: 700; margin-top: 10px; }
+  #verifyZones { font-size: 52px; font-weight: 800; margin-top: 8px; }
+  #verifyValid { font-size: 18px; margin-top: 10px; opacity: .95; }
+  #verifyClose {
+    margin-top: 20px;
     width: 100%;
-    max-width: 320px;
-    min-height: 58px;
+    max-width: 340px;
+    min-height: 60px;
+    border: none;
+    border-radius: 14px;
     font-size: 20px;
+    font-weight: 800;
     background: #fff;
     color: #000;
   }
@@ -176,73 +272,103 @@
 <div class="app">
   <h1>NFC Terminál V2</h1>
 
-  <div class="row2">
-    <div class="topcard"><div class="label">Zůstatek</div><div class="value" id="balance">?</div></div>
-    <div class="topcard"><div class="label">UID</div><div class="value small" id="viewUid">-</div></div>
+  <div class="toprow">
+    <div class="topcard">
+      <div class="label">Zůstatek</div>
+      <div class="value" id="balance">?</div>
+    </div>
+    <div class="topcard">
+      <div class="label">UID</div>
+      <div class="value" id="uid">-</div>
+    </div>
   </div>
 
-  <div id="status" class="info">Stiskněte „Zapnout NFC“.</div>
+  <div class="statusbar" id="status">Připraveno.</div>
 
-  <div class="row2">
-    <button id="startNFC">Zapnout NFC</button>
-    <button onclick="startTopUp()">Dobít</button>
-    <button onclick="startPurchase()">Koupit</button>
-    <button onclick="startVerify()">Ověřit</button>
+  <div class="main-buttons">
+    <button class="bigbtn" id="btnNFC">Zapnout NFC</button>
+    <button class="bigbtn" onclick="openTopUp()">Dobít</button>
+    <button class="bigbtn" onclick="openBuy()">Koupit</button>
+    <button class="bigbtn" onclick="openVerify()">Ověřit</button>
   </div>
+</div>
 
-  <div class="card">
-    <div class="field">
-      <label for="ticketType">Typ jízdenky</label>
-      <select id="ticketType" onchange="onTicketTypeChange()">
-        <option value="4">Pásmová jízdenka PID</option>
-        <option value="1">Jednorázová jízdenka</option>
-        <option value="2">Celodenní jízdenka</option>
-        <option value="3">Studentská jízdenka</option>
-        <option value="5">Vlastní cena</option>
-      </select>
+<!-- DOBÍT -->
+<div class="overlay" id="topupOverlay">
+  <div class="panel">
+    <div class="panelhead">
+      <div class="paneltitle">Dobít kredit</div>
+      <div class="panelsub">Zadej částku, pak přilož kartu</div>
     </div>
 
-    <div id="zoneBlock" class="row2">
+    <div class="card">
       <div class="field">
-        <label for="zoneCount">Počet pásem</label>
-        <select id="zoneCount" onchange="updatePrice()"></select>
-      </div>
-      <div class="field">
-        <label for="zonePrice">Cena pásma (Kč)</label>
-        <input id="zonePrice" type="text" inputmode="numeric" pattern="[0-9]*" value="12" oninput="digitsOnly(this); updatePrice()" />
+        <label for="topupAmount">Částka (Kč)</label>
+        <input id="topupAmount" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="0" oninput="digitsOnly(this)" />
       </div>
     </div>
 
-    <div id="customPriceBlock" class="field hidden">
-      <label for="customPriceInput">Vlastní cena jízdenky (Kč)</label>
-      <input id="customPriceInput" type="text" inputmode="numeric" pattern="[0-9]*" value="25" oninput="digitsOnly(this); updatePrice()" />
-    </div>
-
-    <div class="row2">
-      <div class="field">
-        <label for="ticketValidity">Platnost (min)</label>
-        <input id="ticketValidity" type="text" inputmode="numeric" pattern="[0-9]*" value="60" oninput="digitsOnly(this)" />
-      </div>
-      <div class="field">
-        <label for="amountInput">Částka k dobití (Kč)</label>
-        <input id="amountInput" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="0" oninput="digitsOnly(this)" />
-      </div>
-    </div>
-
-    <div class="priceBox" style="margin-top:8px; margin-bottom:0;">
-      Cena jízdenky: <strong id="ticketPrice">0 Kč</strong>
-      <span id="priceDetail" style="margin-left:6px;"></span>
+    <div class="actions">
+      <button class="actionbtn secondary" onclick="closeTopUp()">Zavřít</button>
+      <button class="actionbtn" onclick="startTopUp()">Pokračovat</button>
     </div>
   </div>
 </div>
 
-<div id="overlay" class="none">
-  <div id="ovIcon"></div>
-  <div id="ovTitle"></div>
-  <div id="ovTicket"></div>
-  <div id="ovZones"></div>
-  <div id="ovValid"></div>
-  <button id="ovClose" onclick="closeOverlay()">Zavřít</button>
+<!-- KOUPIT -->
+<div class="overlay" id="buyOverlay">
+  <div class="panel">
+    <div class="panelhead">
+      <div class="paneltitle">Koupit jízdenku</div>
+      <div class="panelsub">Vyber typ a přilož kartu</div>
+    </div>
+
+    <div class="card">
+      <div class="field">
+        <label for="ticketType">Typ jízdenky</label>
+        <select id="ticketType" onchange="onTicketTypeChange()">
+          <option value="4">Pásmová jízdenka PID</option>
+          <option value="1">Jednorázová jízdenka</option>
+          <option value="2">Celodenní jízdenka</option>
+          <option value="3">Studentská jízdenka</option>
+          <option value="5">Vlastní cena</option>
+        </select>
+      </div>
+
+      <div id="zoneBlock">
+        <div class="row2">
+          <div class="field">
+            <label for="zoneCount">Počet pásem</label>
+            <select id="zoneCount" onchange="updatePrice()"></select>
+          </div>
+          <div class="field">
+            <label for="zonePrice">Cena pásma (Kč)</label>
+            <input id="zonePrice" type="text" inputmode="numeric" pattern="[0-9]*" value="12" oninput="digitsOnly(this); updatePrice()" />
+          </div>
+        </div>
+      </div>
+
+      <div id="customPriceBlock" class="field hidden">
+        <label for="customPriceInput">Vlastní cena jízdenky (Kč)</label>
+        <input id="customPriceInput" type="text" inputmode="numeric" pattern="[0-9]*" value="25" oninput="digitsOnly(this); updatePrice()" />
+      </div>
+
+      <div class="field">
+        <label for="ticketValidity">Platnost (min)</label>
+        <input id="ticketValidity" type="text" inputmode="numeric" pattern="[0-9]*" value="60" oninput="digitsOnly(this)" />
+      </div>
+
+      <div class="priceBox">
+        Cena jízdenky: <strong id="ticketPrice">0 Kč</strong><br>
+        <span id="priceDetail"></span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="actionbtn secondary" onclick="closeBuy()">Zavřít</button>
+      <button class="actionbtn" onclick="startBuy()">Pokračovat</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -251,7 +377,7 @@ const MIME_TYPE = "application/x-nfc-terminal";
 const FORMAT_VERSION = 1;
 const MAX_ZONES = 13;
 const FIXED_PRICES = { 1: 25, 2: 80, 3: 15 };
-const TICKET_NAMES = { 0: "Žádná", 1: "Jednorázová jízdenka", 2: "Celodenní jízdenka", 3: "Studentská jízdenka", 4: "Pásmová jízdenka PID", 5: "Jízdenka (vlastní cena)" };
+const TICKET_NAMES = { 0: "Žádná", 1: "Jednorázová jízdenka", 2: "Celodenní jízdenka", 3: "Studentská jízdenka", 4: "Pásmová jízdenka PID", 5: "Vlastní cena" };
 
 let ndef = null;
 let pendingAction = null;
@@ -268,14 +394,12 @@ function nowMin() { return Math.floor(Date.now() / 60000); }
 function minToStr(min) { return min ? new Date(min * 60000).toLocaleString("cs-CZ") : "-"; }
 function digitsOnly(el) { el.value = el.value.replace(/\D+/g, ""); }
 function numVal(id) { return parseInt(document.getElementById(id).value, 10) || 0; }
-
 function setStatus(msg, type = "info") {
-  const el = document.getElementById("status");
-  el.textContent = msg;
-  el.className = type;
+  const s = document.getElementById("status");
+  s.textContent = msg;
+  s.className = "statusbar " + type;
 }
 
-/* ---------- Kódování (24 bajtů) ---------- */
 function checksum(bytes) {
   let h = 0x811c9dc5;
   const key = new TextEncoder().encode(SECRET_KEY);
@@ -312,13 +436,18 @@ function decodeCard(bytes) {
   if (dv.getUint8(0) !== FORMAT_VERSION) return null;
   if (dv.getUint32(20) !== checksum(plain.slice(0, 20))) return null;
   return {
-    balance: dv.getUint32(1), ticketType: dv.getUint8(5), zones: dv.getUint8(6),
-    validUntilMin: dv.getUint32(7), lastKind: dv.getUint8(11), lastAmount: dv.getUint16(12),
-    lastTicketType: dv.getUint8(14), lastZones: dv.getUint8(15), lastTimeMin: dv.getUint32(16)
+    balance: dv.getUint32(1),
+    ticketType: dv.getUint8(5),
+    zones: dv.getUint8(6),
+    validUntilMin: dv.getUint32(7),
+    lastKind: dv.getUint8(11),
+    lastAmount: dv.getUint16(12),
+    lastTicketType: dv.getUint8(14),
+    lastZones: dv.getUint8(15),
+    lastTimeMin: dv.getUint32(16)
   };
 }
 
-/* ---------- UI ---------- */
 function initZoneSelect() {
   const sel = document.getElementById("zoneCount");
   for (let i = 1; i <= MAX_ZONES; i++) {
@@ -352,31 +481,34 @@ function updatePrice() {
 }
 function refreshTop() {
   document.getElementById("balance").textContent = cardLoaded ? card.balance + " Kč" : "?";
-  document.getElementById("viewUid").textContent = cardUid;
+  document.getElementById("uid").textContent = cardUid;
 }
 
-/* ---------- Celoobrazovkové ověření ---------- */
-function showOverlay(kind, icon, title, ticket, zones, valid) {
-  const ov = document.getElementById("overlay");
+function openTopUp() { document.getElementById("topupOverlay").classList.add("show"); setStatus("Zadejte částku.", "info"); }
+function closeTopUp() { document.getElementById("topupOverlay").classList.remove("show"); setStatus("Připraveno.", "info"); }
+function openBuy() { document.getElementById("buyOverlay").classList.add("show"); onTicketTypeChange(); setStatus("Vyberte jízdenku.", "info"); }
+function closeBuy() { document.getElementById("buyOverlay").classList.remove("show"); setStatus("Připraveno.", "info"); }
+
+function showVerify(kind, icon, title, ticket, zones, valid) {
+  const ov = document.getElementById("verifyOverlay");
   ov.className = "show " + kind;
-  document.getElementById("ovIcon").textContent = icon;
-  document.getElementById("ovTitle").textContent = title;
-  document.getElementById("ovTicket").textContent = ticket;
-  document.getElementById("ovZones").textContent = zones;
-  document.getElementById("ovValid").textContent = valid;
+  document.getElementById("verifyIcon").textContent = icon;
+  document.getElementById("verifyTitle").textContent = title;
+  document.getElementById("verifyTicket").textContent = ticket;
+  document.getElementById("verifyZones").textContent = zones;
+  document.getElementById("verifyValid").textContent = valid;
 }
-function closeOverlay() {
-  document.getElementById("overlay").className = "none";
+function closeVerify() {
+  document.getElementById("verifyOverlay").className = "";
   setStatus("Připraveno.", "info");
 }
 
-/* ---------- NFC ---------- */
 async function initNFC() {
-  if (!("NDEFReader" in window)) { setStatus("NFC není v tomto prohlížeči podporováno (použijte Chrome na Androidu přes HTTPS).", "error"); return; }
+  if (!("NDEFReader" in window)) { setStatus("NFC není podporováno v tomto prohlížeči.", "error"); return; }
   try {
     ndef = new NDEFReader();
     await ndef.scan();
-    document.getElementById("startNFC").disabled = true;
+    document.getElementById("btnNFC").disabled = true;
     setStatus("NFC aktivní — vyberte akci a přiložte kartu.", "info");
     ndef.onreading = (e) => handleReading(e);
     ndef.onreadingerror = () => setStatus("Chyba čtení NFC.", "error");
@@ -400,9 +532,8 @@ async function handleReading(event) {
         decoded = decodeCard(bytes);
       }
     }
-    if (decoded) {
-      card = decoded;
-    } else {
+    if (decoded) card = decoded;
+    else {
       card = emptyCard();
       card.lastKind = 3;
       card.lastTimeMin = nowMin();
@@ -431,8 +562,10 @@ async function runPendingAction() {
     card.lastZones = 0;
     card.lastTimeMin = nowMin();
     await writeCard();
-    setStatus(`Dobito ${amount} Kč. Nový kredit: ${card.balance} Kč.`, "success");
-    document.getElementById("amountInput").value = "";
+    setStatus(`Dobito ${amount} Kč.`, "success");
+    closeTopUp();
+    document.getElementById("topupAmount").value = "";
+    return;
   }
 
   if (action === "buyTicket") {
@@ -440,11 +573,8 @@ async function runPendingAction() {
     const validity = numVal("ticketValidity");
     if (!validity) { setStatus("Zadejte platnost jízdenky.", "error"); return; }
     if (t.price <= 0) { setStatus("Neplatná cena jízdenky.", "error"); return; }
-    if (t.price > 65535) { setStatus("Cena je příliš vysoká (max 65 535 Kč).", "error"); return; }
-    if (card.balance < t.price) {
-      setStatus(`Nedostatek kreditu (${card.balance} Kč, cena ${t.price} Kč).`, "error");
-      return;
-    }
+    if (card.balance < t.price) { setStatus(`Nedostatek kreditu (${card.balance} Kč, cena ${t.price} Kč).`, "error"); return; }
+
     card.balance -= t.price;
     card.ticketType = t.type;
     card.zones = t.zones;
@@ -455,48 +585,61 @@ async function runPendingAction() {
     card.lastZones = t.zones;
     card.lastTimeMin = nowMin();
     await writeCard();
-    setStatus(`Prodáno: ${TICKET_NAMES[t.type]}${t.zones ? " (" + t.zones + " p.)" : ""} za ${t.price} Kč.`, "success");
+    setStatus(`Prodáno za ${t.price} Kč.`, "success");
+    closeBuy();
+    return;
   }
 
   if (action === "verify") {
     if (!card.ticketType) {
-      showOverlay("none", "✖", "Žádná jízdenka", "Na kartě není jízdenka", "", "");
+      showVerify("none", "✖", "Žádná jízdenka", "Na kartě není jízdenka", "", "");
+      return;
+    }
+    const valid = card.validUntilMin * 60000 > Date.now();
+    const zones = card.zones ? `${card.zones} ${card.zones === 1 ? "pásmo" : card.zones < 5 ? "pásma" : "pásem"}` : "";
+    const ticket = TICKET_NAMES[card.ticketType];
+    if (valid) {
+      showVerify("ok", "✔", "PLATNÁ", ticket, zones, "Platí do " + minToStr(card.validUntilMin));
     } else {
-      const valid = card.validUntilMin * 60000 > Date.now();
-      const zones = card.zones ? card.zones + (card.zones === 1 ? " pásmo" : card.zones < 5 ? " pásma" : " pásem") : "";
-      if (valid) {
-        showOverlay("ok", "✔", "PLATNÁ", TICKET_NAMES[card.ticketType], zones, "Platí do " + minToStr(card.validUntilMin));
-      } else {
-        showOverlay("bad", "✖", "NEPLATNÁ", TICKET_NAMES[card.ticketType], zones, "Vypršela " + minToStr(card.validUntilMin));
-      }
+      showVerify("bad", "✖", "NEPLATNÁ", ticket, zones, "Vypršela " + minToStr(card.validUntilMin));
     }
   }
-
   refreshTop();
 }
 
 function startTopUp() {
-  const v = numVal("amountInput");
-  if (!v) { setStatus("Zadejte částku pro dobití.", "error"); return; }
+  const v = numVal("topupAmount");
+  if (!v) { setStatus("Zadejte částku.", "error"); return; }
   if (v > 65535) { setStatus("Maximální jednorázové dobití je 65 535 Kč.", "error"); return; }
   pendingAction = "topup";
   amount = v;
   setStatus(`Přiložte kartu — dobití ${v} Kč.`, "info");
 }
-function startPurchase() {
-  const t = getTicketPrice();
+function startBuy() {
   pendingAction = "buyTicket";
+  const t = getTicketPrice();
   setStatus(`Přiložte kartu — nákup za ${t.price} Kč.`, "info");
 }
 function startVerify() {
   pendingAction = "verify";
-  setStatus("Přiložte kartu k ověření jízdenky.", "info");
+  closeTopUp();
+  closeBuy();
+  setStatus("Přiložte kartu k ověření.", "info");
 }
 
-document.getElementById("startNFC").addEventListener("click", initNFC);
+document.getElementById("btnNFC").addEventListener("click", initNFC);
 initZoneSelect();
 onTicketTypeChange();
 refreshTop();
 </script>
+
+<div id="verifyOverlay" class="">
+  <div id="verifyIcon"></div>
+  <div id="verifyTitle"></div>
+  <div id="verifyTicket"></div>
+  <div id="verifyZones"></div>
+  <div id="verifyValid"></div>
+  <button id="verifyClose" onclick="closeVerify()">Zavřít</button>
+</div>
 </body>
 </html>
