@@ -19,230 +19,131 @@
   }
 
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
   html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-    background: var(--bg);
-    color: var(--text);
+    margin: 0; padding: 0; width: 100%; min-height: 100%;
+    background: var(--bg); color: var(--text);
     font-family: "Segoe UI", Arial, sans-serif;
   }
-
-  body {
-    overflow: hidden;
-    padding: 8px;
-  }
+  body { overflow: hidden; padding: 8px; }
 
   .app {
-    width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    width: 100%; max-width: 700px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 8px;
   }
 
   h1 {
-    margin: 0;
-    color: var(--blue);
-    text-align: center;
-    font-size: 24px;
-    line-height: 1.1;
-  }
-
-  .statusbar {
-    padding: 8px 10px;
-    border-radius: 12px;
-    background: #000;
-    border: 1px solid var(--border);
-    font-size: 13px;
-    line-height: 1.35;
-    color: var(--blue);
-    min-height: 40px;
+    margin: 0; color: var(--blue); text-align: center;
+    font-size: 24px; line-height: 1.1;
   }
 
   .toprow {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
   }
 
   .topcard {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 8px 10px;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 8px 10px;
   }
 
   .topcard .label { font-size: 10px; color: var(--muted); margin-bottom: 2px; }
   .topcard .value {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--blue);
-    line-height: 1.1;
-    word-break: break-word;
+    font-size: 18px; font-weight: 800; color: var(--blue);
+    line-height: 1.1; word-break: break-word;
+  }
+
+  .statusbar {
+    padding: 8px 10px; border-radius: 12px; background: #000;
+    border: 1px solid var(--border); font-size: 13px;
+    line-height: 1.35; color: var(--blue); min-height: 40px;
   }
 
   .main-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
   }
 
   .bigbtn {
-    min-height: 84px;
-    border: none;
-    border-radius: 18px;
-    font-size: 22px;
-    font-weight: 800;
-    cursor: pointer;
-    background: var(--blue);
-    color: #000;
+    min-height: 84px; border: none; border-radius: 18px;
+    font-size: 22px; font-weight: 800; cursor: pointer;
+    background: var(--blue); color: #000;
     box-shadow: 0 0 14px rgba(0,170,255,0.18);
   }
 
-  .bigbtn:active {
-    background: var(--blue2);
-    transform: scale(0.98);
-  }
+  .bigbtn:active { background: var(--blue2); transform: scale(0.98); }
 
   .overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    display: none;
-    flex-direction: column;
-    background: var(--bg);
+    position: fixed; inset: 0; z-index: 100;
+    display: none; flex-direction: column; background: var(--bg);
     padding: 10px;
   }
-
   .overlay.show { display: flex; }
 
   .panel {
-    width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-height: 0;
-    flex: 1;
+    width: 100%; max-width: 700px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 8px; min-height: 0; flex: 1;
   }
 
   .panelhead {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 10px;
-    text-align: center;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px; text-align: center;
   }
 
   .paneltitle {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--blue);
+    font-size: 22px; font-weight: 800; color: var(--blue);
   }
 
   .panelsub {
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 4px;
+    color: var(--muted); font-size: 12px; margin-top: 4px;
   }
 
   .card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 10px;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 14px; padding: 10px;
   }
 
   .field { margin-bottom: 8px; }
   .field:last-child { margin-bottom: 0; }
 
   .field label {
-    display: block;
-    color: #aaa;
-    margin-bottom: 3px;
-    font-size: 11px;
+    display: block; color: #aaa; margin-bottom: 3px; font-size: 11px;
   }
 
-  .field input,
-  .field select {
-    width: 100%;
-    font-size: 17px;
-    border: 2px solid var(--blue);
-    border-radius: 12px;
-    padding: 10px 12px;
-    background: #000;
-    color: var(--blue);
-    outline: none;
-    appearance: none;
-    min-height: 46px;
+  .field input, .field select {
+    width: 100%; font-size: 17px; border: 2px solid var(--blue);
+    border-radius: 12px; padding: 10px 12px;
+    background: #000; color: var(--blue); outline: none;
+    appearance: none; min-height: 46px;
   }
 
   .row2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
   }
 
   .priceBox {
-    background: var(--panel2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 8px 10px;
-    font-size: 13px;
-    color: #ddd;
+    background: var(--panel2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 8px 10px; font-size: 13px; color: #ddd;
   }
   .priceBox strong { color: var(--green); font-size: 20px; }
 
   .actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-top: auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto;
   }
 
   .actionbtn {
-    min-height: 56px;
-    border: none;
-    border-radius: 14px;
-    font-size: 18px;
-    font-weight: 800;
-    cursor: pointer;
-    background: var(--blue);
-    color: #000;
+    min-height: 56px; border: none; border-radius: 14px;
+    font-size: 18px; font-weight: 800; cursor: pointer;
+    background: var(--blue); color: #000;
   }
 
-  .actionbtn.secondary {
-    background: #333;
-    color: #fff;
-  }
-
-  .actionbtn:active {
-    background: var(--blue2);
-    transform: scale(0.98);
-  }
-
-  .actionbtn.secondary:active {
-    background: #444;
-  }
+  .actionbtn.secondary { background: #333; color: #fff; }
+  .actionbtn:active { background: var(--blue2); transform: scale(0.98); }
+  .actionbtn.secondary:active { background: #444; }
 
   .hidden { display: none !important; }
 
   #verifyOverlay {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    color: #fff;
+    position: fixed; inset: 0; z-index: 200;
+    display: none; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; padding: 20px; color: #fff;
   }
   #verifyOverlay.show { display: flex; }
   #verifyOverlay.wait { background: #0a0a0a; }
@@ -257,16 +158,9 @@
   #verifyValid { font-size: 18px; margin-top: 10px; opacity: .95; }
 
   #verifyClose {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 340px;
-    min-height: 60px;
-    border: none;
-    border-radius: 14px;
-    font-size: 20px;
-    font-weight: 800;
-    background: #fff;
-    color: #000;
+    margin-top: 20px; width: 100%; max-width: 340px;
+    min-height: 60px; border: none; border-radius: 14px;
+    font-size: 20px; font-weight: 800; background: #fff; color: #000;
   }
 </style>
 </head>
@@ -493,19 +387,32 @@ function refreshTop() {
   document.getElementById("uid").textContent = cardUid;
 }
 
-function openTopUp() { document.getElementById("topupOverlay").classList.add("show"); setStatus("Zadejte částku.", "info"); }
-function closeTopUp() { document.getElementById("topupOverlay").classList.remove("show"); setStatus("Připraveno.", "info"); }
-function openBuy() { document.getElementById("buyOverlay").classList.add("show"); onTicketTypeChange(); setStatus("Vyberte jízdenku.", "info"); }
-function closeBuy() { document.getElementById("buyOverlay").classList.remove("show"); setStatus("Připraveno.", "info"); }
-
-function openVerifyScreen() {
-  const ov = document.getElementById("verifyOverlay");
-  ov.className = "show wait";
+function openTopUp() {
+  document.getElementById("topupOverlay").classList.add("show");
+  setStatus("Zadejte částku.", "info");
+}
+function closeTopUp() {
+  document.getElementById("topupOverlay").classList.remove("show");
+  setStatus("Připraveno.", "info");
+}
+function openBuy() {
+  document.getElementById("buyOverlay").classList.add("show");
+  onTicketTypeChange();
+  setStatus("Vyberte jízdenku.", "info");
+}
+function closeBuy() {
+  document.getElementById("buyOverlay").classList.remove("show");
+  setStatus("Připraveno.", "info");
+}
+function openVerify() {
+  document.getElementById("verifyOverlay").className = "show wait";
   document.getElementById("verifyIcon").textContent = "⌛";
   document.getElementById("verifyTitle").textContent = "Připraveno na ověření";
   document.getElementById("verifyTicket").textContent = "Přilož kartu k NFC";
   document.getElementById("verifyZones").textContent = "";
   document.getElementById("verifyValid").textContent = "";
+  pendingAction = "verify";
+  setStatus("Přiložte kartu k ověření.", "info");
 }
 function showVerify(kind, icon, title, ticket, zones, valid) {
   const ov = document.getElementById("verifyOverlay");
@@ -518,11 +425,15 @@ function showVerify(kind, icon, title, ticket, zones, valid) {
 }
 function closeVerify() {
   document.getElementById("verifyOverlay").className = "wait";
+  pendingAction = null;
   setStatus("Připraveno.", "info");
 }
 
 async function initNFC() {
-  if (!("NDEFReader" in window)) { setStatus("NFC není podporováno v tomto prohlížeči.", "error"); return; }
+  if (!("NDEFReader" in window)) {
+    setStatus("NFC není podporováno v tomto prohlížeči.", "error");
+    return;
+  }
   try {
     ndef = new NDEFReader();
     await ndef.scan();
@@ -589,9 +500,9 @@ async function runPendingAction() {
   if (action === "buyTicket") {
     const t = getTicketPrice();
     const validity = numVal("ticketValidity");
-    if (!validity) { setStatus("Zadejte platnost jízdenky.", "error"); return; }
-    if (t.price <= 0) { setStatus("Neplatná cena jízdenky.", "error"); return; }
-    if (card.balance < t.price) { setStatus(`Nedostatek kreditu (${card.balance} Kč, cena ${t.price} Kč).`, "error"); return; }
+    if (!validity) { setStatus("Zadejte platnost jízdenky.", "error"); pendingAction = "buyTicket"; return; }
+    if (t.price <= 0) { setStatus("Neplatná cena jízdenky.", "error"); pendingAction = "buyTicket"; return; }
+    if (card.balance < t.price) { setStatus(`Nedostatek kreditu (${card.balance} Kč, cena ${t.price} Kč).`, "error"); pendingAction = "buyTicket"; return; }
 
     card.balance -= t.price;
     card.ticketType = t.type;
@@ -609,7 +520,6 @@ async function runPendingAction() {
   }
 
   if (action === "verify") {
-    openVerifyScreen();
     if (!card.ticketType) {
       showVerify("none", "✖", "Žádná jízdenka", "Na kartě není jízdenka", "", "");
       return;
@@ -640,13 +550,6 @@ function startBuy() {
   pendingAction = "buyTicket";
   const t = getTicketPrice();
   setStatus(`Přiložte kartu — nákup za ${t.price} Kč.`, "info");
-}
-function startVerify() {
-  closeTopUp();
-  closeBuy();
-  pendingAction = "verify";
-  openVerifyScreen();
-  setStatus("Přiložte kartu k ověření.", "info");
 }
 
 document.getElementById("btnNFC").addEventListener("click", initNFC);
