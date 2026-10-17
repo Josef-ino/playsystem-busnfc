@@ -19,298 +19,139 @@
   }
 
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
   html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: var(--bg);
-    color: var(--text);
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    overflow: hidden; background: var(--bg); color: var(--text);
     font-family: "Segoe UI", Arial, sans-serif;
   }
-
-  body { padding: 8px; }
+  body { padding: 6px; }
 
   .app {
-    width: 100%;
-    height: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    width: 100%; height: 100%;
+    max-width: 1200px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 6px;
   }
 
   h1 {
-    margin: 0;
-    color: var(--blue);
-    text-align: center;
-    font-size: clamp(22px, 5vw, 36px);
-    line-height: 1;
+    margin: 0; color: var(--blue); text-align: center;
+    font-size: clamp(20px, 4.5vw, 32px); line-height: 1;
   }
 
   .subtitle {
-    margin: 0;
-    text-align: center;
-    color: var(--muted);
-    font-size: 11px;
-    line-height: 1.2;
+    margin: 0; text-align: center; color: var(--muted);
+    font-size: 10px; line-height: 1.15;
   }
 
   .topbar {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 8px;
-    flex: 0 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; flex: 0 0 auto;
   }
 
   .topcard {
-    background: var(--panel);
-    border: 1px solid rgba(255,255,255,0.04);
-    border-radius: 14px;
-    padding: 8px 10px;
-    box-shadow: 0 0 14px rgba(0,170,255,0.08);
+    background: var(--panel); border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 12px; padding: 7px 8px; box-shadow: 0 0 12px rgba(0,170,255,0.08);
     min-width: 0;
   }
-
-  .topcard .label {
-    font-size: 10px;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-
+  .topcard .label { font-size: 9px; color: var(--muted); margin-bottom: 3px; }
   .topcard .value {
-    font-size: clamp(13px, 3vw, 22px);
-    font-weight: 800;
-    color: var(--blue);
-    line-height: 1.05;
-    word-break: break-word;
+    font-size: clamp(12px, 2.7vw, 20px); font-weight: 800; color: var(--blue);
+    line-height: 1.05; word-break: break-word;
   }
 
   .topactions {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    flex: 0 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; flex: 0 0 auto;
   }
 
   .main {
-    flex: 1 1 auto;
-    min-height: 0;
-    display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 8px;
+    flex: 1 1 auto; min-height: 0;
+    display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 6px;
   }
 
   .card {
-    background: var(--panel);
-    border-radius: 16px;
-    padding: 10px;
+    background: var(--panel); border-radius: 14px; padding: 8px;
     border: 1px solid rgba(255,255,255,0.04);
-    box-shadow: 0 0 16px rgba(0,170,255,0.08);
-    min-height: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 0 14px rgba(0,170,255,0.08);
+    min-height: 0; overflow: hidden; display: flex; flex-direction: column;
   }
 
-  .section-title {
-    font-size: 14px;
-    margin: 0 0 6px;
-    color: #fff;
-    flex: 0 0 auto;
+  .section-title { font-size: 13px; margin: 0 0 5px; color: #fff; flex: 0 0 auto; }
+
+  .field { margin-bottom: 6px; }
+  .field label { display: block; color: #aaa; margin-bottom: 3px; font-size: 9px; }
+
+  .field input, .field select {
+    width: 100%; font-size: 13px; border: 2px solid var(--blue); border-radius: 11px;
+    padding: 8px 9px; background: #000; color: var(--blue); outline: none; appearance: none; min-height: 38px;
   }
 
-  .field {
-    margin-bottom: 7px;
-  }
-
-  .field label {
-    display: block;
-    color: #aaa;
-    margin-bottom: 4px;
-    font-size: 10px;
-  }
-
-  .field input,
-  .field select {
-    width: 100%;
-    font-size: 14px;
-    border: 2px solid var(--blue);
-    border-radius: 12px;
-    padding: 9px 10px;
-    background: #000;
-    color: var(--blue);
-    outline: none;
-    appearance: none;
-    min-height: 40px;
-  }
-
-  .compact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 7px;
-  }
+  .compact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 
   .priceBox {
-    background: var(--panel2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 8px 10px;
-    margin-bottom: 7px;
-    font-size: 12px;
-    line-height: 1.35;
-    color: #ddd;
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 11px;
+    padding: 7px 9px; margin-bottom: 6px; font-size: 11px; line-height: 1.3; color: #ddd;
   }
-
-  .priceBox strong {
-    color: var(--green);
-    font-size: 16px;
-  }
+  .priceBox strong { color: var(--green); font-size: 15px; }
 
   .amountWrap {
-    display: grid;
-    grid-template-columns: 1fr 0.35fr;
-    gap: 6px;
-    margin-bottom: 7px;
+    display: grid; grid-template-columns: 1fr 0.28fr; gap: 6px; margin-bottom: 6px;
   }
 
-  #amountInput {
-    width: 100%;
-    padding: 10px 10px;
-    font-size: 24px;
-    text-align: center;
-    color: var(--blue);
-    background: #000;
-    border: 2px solid var(--blue);
-    border-radius: 12px;
-    outline: none;
+  #amountInput, #customPriceInput {
+    width: 100%; padding: 9px 9px; font-size: 21px; text-align: center; color: var(--blue);
+    background: #000; border: 2px solid var(--blue); border-radius: 11px; outline: none;
   }
 
   .amountBtn {
-    border: none;
-    border-radius: 12px;
-    background: var(--panel2);
-    color: var(--blue);
-    font-size: 18px;
-    font-weight: 800;
-    cursor: pointer;
-    border: 1px solid var(--border);
+    border: none; border-radius: 11px; background: var(--panel2); color: var(--blue);
+    font-size: 16px; font-weight: 800; cursor: pointer; border: 1px solid var(--border);
   }
 
   #keypad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;
   }
 
-  .key,
-  button.action,
-  #startNFC {
-    min-height: 44px;
-    border: none;
-    border-radius: 12px;
-    font-weight: 800;
-    cursor: pointer;
+  .key, button.action, #startNFC {
+    min-height: 40px; border: none; border-radius: 11px; font-weight: 800; cursor: pointer;
     transition: background .12s, transform .08s;
   }
-
   .key {
-    background: var(--blue);
-    color: #000;
-    font-size: 18px;
-    box-shadow: 0 0 10px rgba(0,170,255,0.18);
+    background: var(--blue); color: #000; font-size: 16px; box-shadow: 0 0 9px rgba(0,170,255,0.18);
+  }
+  button.action, #startNFC {
+    background: var(--blue); color: #000; font-size: 12px; padding: 9px 7px;
+    box-shadow: 0 0 9px rgba(0,170,255,0.12);
   }
 
-  button.action,
-  #startNFC {
-    background: var(--blue);
-    color: #000;
-    font-size: 13px;
-    padding: 10px 8px;
-    box-shadow: 0 0 10px rgba(0,170,255,0.12);
-  }
-
-  .key:active,
-  button.action:active,
-  #startNFC:active,
-  .amountBtn:active {
-    background: var(--blue2);
-    transform: scale(0.98);
-  }
-
-  #startNFC[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
+  .key:active, button.action:active, #startNFC:active, .amountBtn:active { background: var(--blue2); transform: scale(0.98); }
+  #startNFC[disabled] { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
 
   #status {
-    margin-top: 7px;
-    min-height: 40px;
-    padding: 8px 10px;
-    border-radius: 12px;
-    background: #000;
-    border: 1px solid var(--border);
-    font-size: 12px;
-    line-height: 1.35;
-    color: var(--muted);
+    margin-top: 6px; min-height: 38px; padding: 7px 9px; border-radius: 11px;
+    background: #000; border: 1px solid var(--border); font-size: 11px; line-height: 1.3; color: var(--muted);
   }
-
   #status.info { color: var(--blue); }
   #status.success { color: var(--green); }
   #status.error { color: var(--red); }
 
   .rightGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    min-height: 0;
-    flex: 1 1 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px; min-height: 0; flex: 1 1 auto;
   }
 
   .mini-card {
-    background: var(--panel2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 8px;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 12px;
+    padding: 8px; min-height: 0; display: flex; flex-direction: column;
   }
 
-  .mini-card h3 {
-    margin: 0 0 6px;
-    color: var(--blue);
-    font-size: 13px;
-    flex: 0 0 auto;
-  }
+  .mini-card h3 { margin: 0 0 5px; color: var(--blue); font-size: 12px; flex: 0 0 auto; }
 
   .kv {
-    display: grid;
-    grid-template-columns: 72px 1fr;
-    gap: 4px 6px;
-    font-size: 11px;
-    line-height: 1.25;
+    display: grid; grid-template-columns: 72px 1fr; gap: 4px 5px; font-size: 10px; line-height: 1.2;
   }
-
   .kv div:nth-child(odd) { color: #9aa; }
 
   #log {
-    margin-top: 8px;
-    flex: 1 1 auto;
-    min-height: 0;
-    background: #000;
-    border-radius: 12px;
-    padding: 8px;
-    color: #cfcfcf;
-    white-space: pre-wrap;
-    font-size: 11px;
-    line-height: 1.3;
-    border: 1px solid var(--border);
-    overflow: auto;
+    margin-top: 6px; flex: 1 1 auto; min-height: 0; background: #000; border-radius: 11px;
+    padding: 7px; color: #cfcfcf; white-space: pre-wrap; font-size: 10px; line-height: 1.25;
+    border: 1px solid var(--border); overflow: auto;
   }
 
   .hidden { display: none; }
@@ -323,15 +164,15 @@
   }
 
   @media (max-width: 560px) {
-    body { padding: 6px; }
+    body { padding: 4px; }
     .topbar { grid-template-columns: 1fr; }
     .topactions { grid-template-columns: 1fr 1fr; }
     .rightGrid { grid-template-columns: 1fr; }
     .compact-grid { grid-template-columns: 1fr; }
-    .section-title { font-size: 13px; }
-    .field { margin-bottom: 6px; }
-    .field input, .field select { font-size: 13px; min-height: 38px; padding: 8px 9px; }
-    .key, button.action, #startNFC, .amountBtn { min-height: 42px; }
+    .section-title { font-size: 12px; }
+    .field { margin-bottom: 5px; }
+    .field input, .field select { font-size: 12px; min-height: 36px; padding: 7px 8px; }
+    .key, button.action, #startNFC, .amountBtn { min-height: 38px; }
     .amountWrap { grid-template-columns: 1fr 0.28fr; }
   }
 
@@ -339,7 +180,7 @@
     .subtitle { display: none; }
     .topbar { grid-template-columns: 1fr 1fr 1fr; }
     .main { grid-template-columns: 0.92fr 1.08fr; }
-    #log { max-height: 120px; }
+    #log { max-height: 110px; }
   }
 </style>
 </head>
@@ -349,18 +190,9 @@
   <div class="subtitle">Dobití kreditu, prodej jízdenek, pásmové PID jízdenky a ověření platnosti přímo na NFC čipu.</div>
 
   <div class="topbar">
-    <div class="topcard">
-      <div class="label">Zůstatek</div>
-      <div class="value" id="balance">?</div>
-    </div>
-    <div class="topcard">
-      <div class="label">UID</div>
-      <div class="value" id="viewUid">-</div>
-    </div>
-    <div class="topcard">
-      <div class="label">Stav</div>
-      <div class="value" id="viewStateShort" style="font-size:12px;color:#ddd;font-weight:700;">Čekám na kartu</div>
-    </div>
+    <div class="topcard"><div class="label">Zůstatek</div><div class="value" id="balance">?</div></div>
+    <div class="topcard"><div class="label">UID</div><div class="value" id="viewUid">-</div></div>
+    <div class="topcard"><div class="label">Stav</div><div class="value" id="viewStateShort" style="font-size:12px;color:#ddd;font-weight:700;">Čekám na kartu</div></div>
   </div>
 
   <div class="topactions">
@@ -381,6 +213,7 @@
           <option value="1">Jednorázová jízdenka</option>
           <option value="2">Celodenní jízdenka</option>
           <option value="3">Studentská jízdenka</option>
+          <option value="5">Vlastní cena</option>
         </select>
       </div>
 
@@ -395,6 +228,11 @@
             <input id="zonePrice" type="number" min="1" value="12" oninput="updatePrice()" />
           </div>
         </div>
+      </div>
+
+      <div id="customPriceBlock" class="field hidden">
+        <label for="customPriceInput">Vlastní cena jízdenky</label>
+        <input id="customPriceInput" type="number" min="1" value="25" oninput="updatePrice()" />
       </div>
 
       <div class="field">
@@ -434,30 +272,10 @@
     </div>
 
     <div class="card">
-      <div class="section-title">Data z karty</div>
-
-      <div class="rightGrid">
-        <div class="mini-card">
-          <h3>Karta</h3>
-          <div class="kv">
-            <div>UID</div><div id="viewUid2">-</div>
-            <div>Kredit</div><div id="viewBalance">-</div>
-            <div>Jízdenka</div><div id="viewTicket">Žádná</div>
-            <div>Pásma</div><div id="viewZones">-</div>
-          </div>
-        </div>
-
-        <div class="mini-card">
-          <h3>Platnost</h3>
-          <div class="kv">
-            <div>Platí do</div><div id="viewValidUntil">-</div>
-            <div>Poslední nákup</div><div id="viewLastPurchase">-</div>
-            <div>Čas nákupu</div><div id="viewLastTime">-</div>
-            <div>Stav</div><div id="viewState">Čekám na kartu</div>
-          </div>
-        </div>
+      <div class="section-title">Ověření</div>
+      <div class="priceBox" style="margin-bottom:8px;">
+        Po ověření se zobrazí stav jízdenky a počet pásem.
       </div>
-
       <div id="log"></div>
     </div>
   </div>
@@ -469,27 +287,23 @@ const MIME_TYPE = "application/x-nfc-terminal";
 const FORMAT_VERSION = 1;
 const MAX_ZONES = 13;
 const FIXED_PRICES = { 1: 25, 2: 80, 3: 15 };
-const TICKET_NAMES = { 0: "Žádná", 1: "Jednorázová jízdenka", 2: "Celodenní jízdenka", 3: "Studentská jízdenka", 4: "Pásmová jízdenka PID" };
-const LAST_KIND = { 0: "-", 1: "Dobití", 2: "Jízdenka", 3: "Inicializace" };
+const TICKET_NAMES = { 0: "Žádná", 1: "Jednorázová jízdenka", 2: "Celodenní jízdenka", 3: "Studentská jízdenka", 4: "Pásmová jízdenka PID", 5: "Vlastní cena" };
 
 let ndef = null;
 let pendingAction = null;
 let amount = 0;
 let busy = false;
 let card = emptyCard();
-let cardUid = "-";
 let cardLoaded = false;
+let cardUid = "-";
 
-function emptyCard() {
-  return { balance: 0, ticketType: 0, zones: 0, validUntilMin: 0, lastKind: 0, lastAmount: 0, lastTicketType: 0, lastZones: 0, lastTimeMin: 0 };
-}
+function emptyCard() { return { balance: 0, ticketType: 0, zones: 0, validUntilMin: 0, lastKind: 0, lastAmount: 0, lastTicketType: 0, lastZones: 0, lastTimeMin: 0 }; }
 function nowMin() { return Math.floor(Date.now() / 60000); }
 function minToStr(min) { return min ? new Date(min * 60000).toLocaleString("cs-CZ") : "-"; }
 function logMsg(m) { const el = document.getElementById("log"); el.textContent = `[${new Date().toLocaleString("cs-CZ")}] ${m}\n` + el.textContent; }
 function setStatus(msg, type = "info") {
   document.getElementById("status").textContent = msg;
   document.getElementById("status").className = type;
-  document.getElementById("viewState").textContent = msg;
   document.getElementById("viewStateShort").textContent = msg;
 }
 
@@ -528,17 +342,7 @@ function decodeCard(bytes) {
   const dv = new DataView(plain.buffer);
   if (dv.getUint8(0) !== FORMAT_VERSION) return null;
   if (dv.getUint32(20) !== checksum(plain.slice(0, 20))) return null;
-  return {
-    balance: dv.getUint32(1),
-    ticketType: dv.getUint8(5),
-    zones: dv.getUint8(6),
-    validUntilMin: dv.getUint32(7),
-    lastKind: dv.getUint8(11),
-    lastAmount: dv.getUint16(12),
-    lastTicketType: dv.getUint8(14),
-    lastZones: dv.getUint8(15),
-    lastTimeMin: dv.getUint32(16)
-  };
+  return { balance: dv.getUint32(1), ticketType: dv.getUint8(5), zones: dv.getUint8(6), validUntilMin: dv.getUint32(7), lastKind: dv.getUint8(11), lastAmount: dv.getUint16(12), lastTicketType: dv.getUint8(14), lastZones: dv.getUint8(15), lastTimeMin: dv.getUint32(16) };
 }
 
 function initZoneSelect() {
@@ -558,30 +362,35 @@ function getTicketPrice() {
     const perZone = parseInt(document.getElementById("zonePrice").value, 10) || 0;
     return { type, zones, price: zones * perZone, perZone };
   }
+  if (type === 5) {
+    const price = parseInt(document.getElementById("customPriceInput").value, 10) || 0;
+    return { type, zones: 0, price, perZone: 0 };
+  }
   return { type, zones: 0, price: FIXED_PRICES[type] || 0, perZone: 0 };
 }
 function onTicketTypeChange() {
-  document.getElementById("zoneBlock").classList.toggle("hidden", parseInt(document.getElementById("ticketType").value, 10) !== 4);
+  const t = parseInt(document.getElementById("ticketType").value, 10);
+  document.getElementById("zoneBlock").classList.toggle("hidden", t !== 4);
+  document.getElementById("customPriceBlock").classList.toggle("hidden", t !== 5);
   updatePrice();
 }
 function updatePrice() {
   const t = getTicketPrice();
   document.getElementById("ticketPrice").textContent = t.price + " Kč";
-  document.getElementById("priceDetail").textContent = t.type === 4 ? `${t.zones} × ${t.perZone} Kč za pásmo` : TICKET_NAMES[t.type];
+  document.getElementById("priceDetail").textContent = t.type === 4 ? `${t.zones} × ${t.perZone} Kč za pásmo` : (t.type === 5 ? "Vlastní cena" : TICKET_NAMES[t.type]);
 }
 function updateDisplay() {
   document.getElementById("balance").textContent = cardLoaded ? card.balance + " Kč" : "?";
   document.getElementById("viewUid").textContent = cardUid;
-  document.getElementById("viewUid2").textContent = cardUid;
   document.getElementById("viewBalance").textContent = cardLoaded ? card.balance + " Kč" : "-";
-  document.getElementById("viewTicket").textContent = TICKET_NAMES[card.ticketType] || "Žádná";
-  document.getElementById("viewZones").textContent = card.zones ? String(card.zones) : "-";
-  document.getElementById("viewValidUntil").textContent = card.ticketType ? minToStr(card.validUntilMin) : "-";
-  let last = LAST_KIND[card.lastKind] || "-";
-  if (card.lastKind === 1) last += ` ${card.lastAmount} Kč`;
-  if (card.lastKind === 2) last = (TICKET_NAMES[card.lastTicketType] || "Jízdenka") + (card.lastZones ? ` (${card.lastZones} p.)` : "") + ` ${card.lastAmount} Kč`;
-  document.getElementById("viewLastPurchase").textContent = last;
-  document.getElementById("viewLastTime").textContent = card.lastTimeMin ? minToStr(card.lastTimeMin) : "-";
+  if (!cardLoaded) {
+    document.getElementById("viewTicket").textContent = "-";
+    document.getElementById("viewZones").textContent = "-";
+    document.getElementById("viewValidUntil").textContent = "-";
+    document.getElementById("viewLastPurchase").textContent = "-";
+    document.getElementById("viewLastTime").textContent = "-";
+    return;
+  }
 }
 
 async function initNFC() {
@@ -614,7 +423,6 @@ async function handleReading(event) {
         decoded = decodeCard(bytes);
       }
     }
-
     if (decoded) {
       card = decoded;
     } else {
@@ -624,10 +432,8 @@ async function handleReading(event) {
       await writeCard();
       logMsg("Nová nebo neplatná karta — inicializována na 0 Kč.");
     }
-
     cardLoaded = true;
-    updateDisplay();
-
+    refreshView();
     if (pendingAction) await runPendingAction();
     else setStatus("Karta načtena.", "success");
   } catch (e) {
@@ -638,10 +444,23 @@ async function handleReading(event) {
   }
 }
 
+function refreshView() {
+  document.getElementById("balance").textContent = cardLoaded ? card.balance + " Kč" : "?";
+  document.getElementById("viewUid2")?.textContent = cardUid;
+  document.getElementById("viewBalance")?.textContent = cardLoaded ? card.balance + " Kč" : "-";
+  document.getElementById("viewTicket") && (document.getElementById("viewTicket").textContent = TICKET_NAMES[card.ticketType] || "Žádná");
+  document.getElementById("viewZones") && (document.getElementById("viewZones").textContent = card.zones ? String(card.zones) : "-");
+  document.getElementById("viewValidUntil") && (document.getElementById("viewValidUntil").textContent = card.ticketType ? minToStr(card.validUntilMin) : "-");
+  let last = LAST_KIND[card.lastKind] || "-";
+  if (card.lastKind === 1) last += ` ${card.lastAmount} Kč`;
+  if (card.lastKind === 2) last = (TICKET_NAMES[card.lastTicketType] || "Jízdenka") + (card.lastZones ? ` (${card.lastZones} p.)` : "") + ` ${card.lastAmount} Kč`;
+  document.getElementById("viewLastPurchase") && (document.getElementById("viewLastPurchase").textContent = last);
+  document.getElementById("viewLastTime") && (document.getElementById("viewLastTime").textContent = card.lastTimeMin ? minToStr(card.lastTimeMin) : "-");
+}
+
 async function runPendingAction() {
   const action = pendingAction;
   pendingAction = null;
-
   if (action === "topup") {
     card.balance += amount;
     card.lastKind = 1;
@@ -654,17 +473,12 @@ async function runPendingAction() {
     logMsg(`Dobito ${amount} Kč, kredit ${card.balance} Kč.`);
     clearInput();
   }
-
   if (action === "buyTicket") {
     const t = getTicketPrice();
     const validity = parseInt(document.getElementById("ticketValidity").value, 10);
     if (!validity || validity <= 0) { setStatus("Zadejte platnost jízdenky.", "error"); return; }
     if (t.price <= 0) { setStatus("Neplatná cena jízdenky.", "error"); return; }
-    if (card.balance < t.price) {
-      setStatus(`Nedostatek kreditu (${card.balance} Kč, cena ${t.price} Kč).`, "error");
-      logMsg("Koupě jízdenky zamítnuta — nedostatek kreditu.");
-      return;
-    }
+    if (card.balance < t.price) { setStatus(`Nedostatek kreditu (${card.balance} Kč, cena ${t.price} Kč).`, "error"); logMsg("Koupě jízdenky zamítnuta — nedostatek kreditu."); return; }
     card.balance -= t.price;
     card.ticketType = t.type;
     card.zones = t.zones;
@@ -678,21 +492,23 @@ async function runPendingAction() {
     setStatus(`Prodáno: ${TICKET_NAMES[t.type]}${t.zones ? " (" + t.zones + " p.)" : ""} za ${t.price} Kč.`, "success");
     logMsg(`Prodáno ${TICKET_NAMES[t.type]}${t.zones ? " " + t.zones + " pásem" : ""} za ${t.price} Kč.`);
   }
-
   if (action === "verify") {
     if (!card.ticketType) {
       setStatus("Na kartě není žádná jízdenka.", "error");
       logMsg("Kontrola: žádná jízdenka.");
-    } else if (card.validUntilMin * 60000 > Date.now()) {
-      setStatus(`Jízdenka je platná do ${minToStr(card.validUntilMin)}.`, "success");
-      logMsg(`Kontrola OK: ${TICKET_NAMES[card.ticketType]}${card.zones ? " (" + card.zones + " p.)" : ""}.`);
     } else {
-      setStatus(`Jízdenka je neplatná.`, "error");
-      logMsg("Kontrola: jízdenka vypršela.");
+      const valid = card.validUntilMin * 60000 > Date.now();
+      const text = TICKET_NAMES[card.ticketType] + (card.zones ? ` (${card.zones} pásem)` : "");
+      if (valid) {
+        setStatus(`Platná: ${text} do ${minToStr(card.validUntilMin)}.`, "success");
+        logMsg(`Kontrola OK: ${text}, platí do ${minToStr(card.validUntilMin)}.`);
+      } else {
+        setStatus(`Neplatná: ${text}.`, "error");
+        logMsg(`Kontrola: jízdenka vypršela: ${text}.`);
+      }
     }
   }
-
-  updateDisplay();
+  refreshView();
 }
 
 function startTopUp() {
@@ -720,10 +536,7 @@ function pressKey(d) {
   i.focus();
 }
 function clearInput() { document.getElementById("amountInput").value = ""; }
-function backspace() {
-  const i = document.getElementById("amountInput");
-  i.value = i.value.slice(0, -1);
-}
+function backspace() { const i = document.getElementById("amountInput"); i.value = i.value.slice(0, -1); }
 
 document.getElementById("startNFC").addEventListener("click", initNFC);
 initZoneSelect();
