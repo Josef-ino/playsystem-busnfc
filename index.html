@@ -245,14 +245,17 @@
     color: #fff;
   }
   #verifyOverlay.show { display: flex; }
+  #verifyOverlay.wait { background: #0a0a0a; }
   #verifyOverlay.ok { background: #0b7a3b; }
   #verifyOverlay.bad { background: #b3261e; }
   #verifyOverlay.none { background: #444; }
+
   #verifyIcon { font-size: 92px; line-height: 1; }
   #verifyTitle { font-size: 34px; font-weight: 800; margin-top: 8px; }
   #verifyTicket { font-size: 24px; font-weight: 700; margin-top: 10px; }
   #verifyZones { font-size: 52px; font-weight: 800; margin-top: 8px; }
   #verifyValid { font-size: 18px; margin-top: 10px; opacity: .95; }
+
   #verifyClose {
     margin-top: 20px;
     width: 100%;
@@ -368,10 +371,10 @@
   </div>
 </div>
 
-<div id="verifyOverlay" class="">
-  <div id="verifyIcon"></div>
-  <div id="verifyTitle"></div>
-  <div id="verifyTicket"></div>
+<div id="verifyOverlay" class="wait">
+  <div id="verifyIcon">⌛</div>
+  <div id="verifyTitle">Připraveno na ověření</div>
+  <div id="verifyTicket">Přilož kartu k NFC</div>
   <div id="verifyZones"></div>
   <div id="verifyValid"></div>
   <button id="verifyClose" onclick="closeVerify()">Zavřít</button>
@@ -495,6 +498,16 @@ function closeTopUp() { document.getElementById("topupOverlay").classList.remove
 function openBuy() { document.getElementById("buyOverlay").classList.add("show"); onTicketTypeChange(); setStatus("Vyberte jízdenku.", "info"); }
 function closeBuy() { document.getElementById("buyOverlay").classList.remove("show"); setStatus("Připraveno.", "info"); }
 
+function openVerifyScreen() {
+  const ov = document.getElementById("verifyOverlay");
+  ov.className = "show wait";
+  document.getElementById("verifyIcon").textContent = "⌛";
+  document.getElementById("verifyTitle").textContent = "Připraveno na ověření";
+  document.getElementById("verifyTicket").textContent = "Přilož kartu k NFC";
+  document.getElementById("verifyZones").textContent = "";
+  document.getElementById("verifyValid").textContent = "";
+}
+
 function showVerify(kind, icon, title, ticket, zones, valid) {
   const ov = document.getElementById("verifyOverlay");
   ov.className = "show " + kind;
@@ -505,7 +518,7 @@ function showVerify(kind, icon, title, ticket, zones, valid) {
   document.getElementById("verifyValid").textContent = valid;
 }
 function closeVerify() {
-  document.getElementById("verifyOverlay").className = "";
+  document.getElementById("verifyOverlay").className = "wait";
   setStatus("Připraveno.", "info");
 }
 
@@ -597,6 +610,7 @@ async function runPendingAction() {
   }
 
   if (action === "verify") {
+    openVerifyScreen();
     if (!card.ticketType) {
       showVerify("none", "✖", "Žádná jízdenka", "Na kartě není jízdenka", "", "");
       return;
@@ -632,6 +646,7 @@ function startVerify() {
   closeTopUp();
   closeBuy();
   pendingAction = "verify";
+  openVerifyScreen();
   setStatus("Přiložte kartu k ověření.", "info");
 }
 
