@@ -26,18 +26,18 @@
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-    padding: 16px;
+    padding: 12px;
   }
 
   .app {
     width: 100%;
-    max-width: 980px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
   h1 {
-    font-size: clamp(28px, 5vw, 40px);
-    margin: 8px 0 8px;
+    font-size: clamp(26px, 5vw, 40px);
+    margin: 6px 0 6px;
     color: var(--blue);
     text-align: center;
     line-height: 1.05;
@@ -46,62 +46,78 @@
   .subtitle {
     color: var(--muted);
     text-align: center;
-    line-height: 1.4;
-    margin: 0 auto 16px;
-    max-width: 780px;
-    font-size: 14px;
+    line-height: 1.35;
+    margin: 0 auto 10px;
+    max-width: 900px;
+    font-size: 13px;
+  }
+
+  .topbar {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr 0.9fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .topcard {
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 16px;
+    padding: 12px 14px;
+    box-shadow: 0 0 16px rgba(0,170,255,0.08);
+  }
+
+  .topcard .label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .topcard .value {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1.1;
+  }
+
+  .topactions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
   }
 
   .layout {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 10px;
+    align-items: start;
   }
 
   .card {
     background: var(--panel);
     border-radius: 18px;
-    padding: 16px;
+    padding: 14px;
     box-shadow: 0 0 20px rgba(0,170,255,0.10);
     border: 1px solid rgba(255,255,255,0.04);
   }
 
   .section-title {
-    font-size: 17px;
-    margin: 0 0 12px;
+    font-size: 16px;
+    margin: 0 0 10px;
     color: #fff;
-  }
-
-  .big-balance {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-  }
-
-  .big-balance .label {
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  #balance {
-    font-size: clamp(32px, 8vw, 48px);
-    font-weight: 800;
-    color: var(--blue);
-    line-height: 1;
   }
 
   #status {
     min-height: 44px;
-    padding: 12px 14px;
-    border-radius: 14px;
+    padding: 10px 12px;
+    border-radius: 12px;
     background: #000;
     border: 1px solid var(--border);
-    font-size: 15px;
-    line-height: 1.45;
+    font-size: 14px;
+    line-height: 1.35;
     color: var(--muted);
+    margin-top: 10px;
   }
 
   #status.info { color: var(--blue); }
@@ -109,23 +125,23 @@
   #status.error { color: var(--red); }
 
   .field {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .field label {
     display: block;
     color: #aaa;
-    margin-bottom: 6px;
-    font-size: 13px;
+    margin-bottom: 5px;
+    font-size: 12px;
   }
 
   .field input,
   .field select {
     width: 100%;
-    font-size: 16px;
+    font-size: 15px;
     border: 2px solid var(--blue);
-    border-radius: 14px;
-    padding: 14px 12px;
+    border-radius: 12px;
+    padding: 11px 12px;
     background: #000;
     color: var(--blue);
     outline: none;
@@ -135,49 +151,69 @@
   .priceBox {
     background: var(--panel2);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 12px;
-    margin-top: 10px;
-    line-height: 1.5;
-    font-size: 14px;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-top: 8px;
+    line-height: 1.45;
+    font-size: 13px;
     color: #ddd;
   }
 
   .priceBox strong {
     color: var(--green);
-    font-size: 20px;
+    font-size: 18px;
   }
 
   #amountInput {
     width: 100%;
-    margin: 12px 0 14px;
-    padding: 14px 12px;
-    font-size: 30px;
+    margin: 10px 0 10px;
+    padding: 12px 10px;
+    font-size: 28px;
     text-align: center;
     color: var(--blue);
     background: #000;
     border: 2px solid var(--blue);
-    border-radius: 14px;
+    border-radius: 12px;
     outline: none;
+  }
+
+  .compact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
   #keypad {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 100%;
+    gap: 8px;
+  }
+
+  .key,
+  button.action,
+  #startNFC {
+    min-height: 54px;
+    border: none;
+    border-radius: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background .15s, transform .08s;
   }
 
   .key {
     background: var(--blue);
     color: #000;
-    font-size: 22px;
-    font-weight: 800;
-    border: none;
-    border-radius: 16px;
-    min-height: 64px;
-    cursor: pointer;
+    font-size: 20px;
     box-shadow: 0 0 10px rgba(0,170,255,0.20);
+  }
+
+  button.action,
+  #startNFC {
+    background: var(--blue);
+    color: #000;
+    font-size: 16px;
+    padding: 12px 14px;
+    box-shadow: 0 0 12px rgba(0,170,255,0.15);
   }
 
   .key:active,
@@ -185,27 +221,6 @@
   #startNFC:active {
     background: var(--blue2);
     transform: scale(0.98);
-  }
-
-  #controls {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-top: 12px;
-  }
-
-  button.action,
-  #startNFC {
-    width: 100%;
-    background: var(--blue);
-    color: #000;
-    font-size: 18px;
-    font-weight: 800;
-    padding: 14px 18px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    box-shadow: 0 0 12px rgba(0,170,255,0.15);
   }
 
   #startNFC[disabled] {
@@ -216,29 +231,29 @@
 
   .info-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
   .mini-card {
     background: var(--panel2);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 14px;
+    border-radius: 14px;
+    padding: 12px;
   }
 
   .mini-card h3 {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     color: var(--blue);
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .kv {
     display: grid;
-    grid-template-columns: 112px 1fr;
-    gap: 8px 10px;
-    font-size: 14px;
-    line-height: 1.4;
+    grid-template-columns: 105px 1fr;
+    gap: 6px 8px;
+    font-size: 13px;
+    line-height: 1.35;
   }
 
   .kv div:nth-child(odd) {
@@ -246,45 +261,38 @@
   }
 
   #log {
-    margin-top: 12px;
+    margin-top: 10px;
     background: #000;
-    border-radius: 14px;
-    padding: 12px;
+    border-radius: 12px;
+    padding: 10px;
     color: #cfcfcf;
-    min-height: 170px;
+    min-height: 130px;
+    max-height: 220px;
     white-space: pre-wrap;
-    font-size: 13px;
-    line-height: 1.45;
+    font-size: 12px;
+    line-height: 1.35;
     border: 1px solid var(--border);
     overflow: auto;
   }
 
   .hidden { display: none; }
 
-  @media (orientation: landscape) and (min-width: 700px) {
-    .layout {
-      grid-template-columns: 0.9fr 1.1fr;
-      align-items: start;
-    }
-
-    .info-grid {
-      grid-template-columns: 1fr 1fr;
+  @media (max-width: 920px) {
+    .topbar,
+    .layout,
+    .topactions,
+    .info-grid,
+    .compact-grid {
+      grid-template-columns: 1fr;
     }
   }
 
-  @media (min-width: 900px) {
-    .layout {
-      grid-template-columns: 360px 1fr;
-      align-items: start;
-    }
-
-    .info-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    #controls {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
+  @media (orientation: landscape) and (max-height: 500px) {
+    .subtitle { display: none; }
+    #log { max-height: 140px; }
+    .card { padding: 12px; }
+    .section-title { margin-bottom: 8px; }
+    .field { margin-bottom: 8px; }
   }
 </style>
 </head>
@@ -295,16 +303,30 @@
     Dobití kreditu, prodej jízdenek, pásmové PID jízdenky a ověření platnosti přímo na NFC čipu.
   </div>
 
+  <div class="topbar">
+    <div class="topcard">
+      <div class="label">Zůstatek</div>
+      <div class="value" id="balance">?</div>
+    </div>
+    <div class="topcard">
+      <div class="label">UID karty</div>
+      <div class="value" id="viewUid">-</div>
+    </div>
+    <div class="topcard">
+      <div class="label">Stav</div>
+      <div class="value" id="viewStateShort" style="font-size:14px;color:#ddd;font-weight:700;">Čekám na kartu</div>
+    </div>
+  </div>
+
+  <div class="topactions">
+    <button id="startNFC">Zapnout NFC</button>
+    <button class="action" onclick="startTopUp()">Dobít kredit</button>
+    <button class="action" onclick="startVerify()">Ověřit jízdenku</button>
+  </div>
+
   <div class="layout">
     <div class="card">
-      <div class="section-title">Zůstatek a prodej</div>
-
-      <div class="big-balance">
-        <div>
-          <div class="label">Zůstatek na kartě</div>
-          <div id="balance">?</div>
-        </div>
-      </div>
+      <div class="section-title">Prodej</div>
 
       <div class="field">
         <label for="ticketType">Typ jízdenky</label>
@@ -317,19 +339,20 @@
       </div>
 
       <div id="zoneBlock">
-        <div class="field">
-          <label for="zoneCount">Počet pásem</label>
-          <select id="zoneCount" onchange="updatePrice()"></select>
-        </div>
-
-        <div class="field">
-          <label for="zonePrice">Aktuální cena jednoho pásma (Kč)</label>
-          <input id="zonePrice" type="number" min="1" value="12" oninput="updatePrice()" />
+        <div class="compact-grid">
+          <div class="field">
+            <label for="zoneCount">Počet pásem</label>
+            <select id="zoneCount" onchange="updatePrice()"></select>
+          </div>
+          <div class="field">
+            <label for="zonePrice">Cena pásma</label>
+            <input id="zonePrice" type="number" min="1" value="12" oninput="updatePrice()" />
+          </div>
         </div>
       </div>
 
       <div class="field">
-        <label for="ticketValidity">Platnost jízdenky (minuty)</label>
+        <label for="ticketValidity">Platnost jízdenky (min)</label>
         <input id="ticketValidity" type="number" min="1" max="4320" value="60" />
       </div>
 
@@ -339,15 +362,9 @@
       </div>
 
       <div class="field">
-        <label for="amountInput">Částka k dobití v Kč</label>
+        <label for="amountInput">Částka k dobití</label>
         <input id="amountInput" type="text" readonly placeholder="0" />
       </div>
-
-      <div id="status" class="info">Stiskněte „Zapnout NFC“.</div>
-    </div>
-
-    <div class="card">
-      <div class="section-title">Ovládání</div>
 
       <div id="keypad">
         <button class="key" onclick="pressKey('1')">1</button>
@@ -364,23 +381,17 @@
         <button class="key" onclick="backspace()">⌫</button>
       </div>
 
-      <div id="controls">
-        <button class="action" onclick="startTopUp()">Dobít kredit</button>
-        <button class="action" onclick="startPurchase()">Koupit jízdenku</button>
-        <button class="action" onclick="startVerify()">Ověřit jízdenku</button>
-      </div>
+      <div id="status" class="info">Stiskněte „Zapnout NFC“.</div>
+    </div>
 
-      <div style="margin-top:14px;">
-        <button id="startNFC">Zapnout NFC</button>
-      </div>
-
-      <div class="section-title" style="margin-top:16px;">Data z karty</div>
+    <div class="card">
+      <div class="section-title">Data z karty</div>
 
       <div class="info-grid">
         <div class="mini-card">
           <h3>Karta</h3>
           <div class="kv">
-            <div>UID</div><div id="viewUid">-</div>
+            <div>UID</div><div id="viewUid2">-</div>
             <div>Kredit</div><div id="viewBalance">-</div>
             <div>Jízdenka</div><div id="viewTicket">Žádná</div>
             <div>Pásma</div><div id="viewZones">-</div>
@@ -388,7 +399,7 @@
         </div>
 
         <div class="mini-card">
-          <h3>Platnost a nákup</h3>
+          <h3>Platnost</h3>
           <div class="kv">
             <div>Platí do</div><div id="viewValidUntil">-</div>
             <div>Poslední nákup</div><div id="viewLastPurchase">-</div>
@@ -423,7 +434,6 @@ let cardLoaded = false;
 function emptyCard() {
   return { balance: 0, ticketType: 0, zones: 0, validUntilMin: 0, lastKind: 0, lastAmount: 0, lastTicketType: 0, lastZones: 0, lastTimeMin: 0 };
 }
-
 function nowMin() { return Math.floor(Date.now() / 60000); }
 function minToStr(min) { return min ? new Date(min * 60000).toLocaleString("cs-CZ") : "-"; }
 function logMsg(m) { const el = document.getElementById("log"); el.textContent = `[${new Date().toLocaleString("cs-CZ")}] ${m}\n` + el.textContent; }
@@ -432,6 +442,7 @@ function setStatus(msg, type = "info") {
   el.textContent = msg;
   el.className = type;
   document.getElementById("viewState").textContent = msg;
+  document.getElementById("viewStateShort").textContent = msg;
 }
 
 function checksum(bytes) {
@@ -502,8 +513,7 @@ function getTicketPrice() {
   return { type, zones: 0, price: FIXED_PRICES[type] || 0, perZone: 0 };
 }
 function onTicketTypeChange() {
-  const type = parseInt(document.getElementById("ticketType").value, 10);
-  document.getElementById("zoneBlock").classList.toggle("hidden", type !== 4);
+  document.getElementById("zoneBlock").classList.toggle("hidden", parseInt(document.getElementById("ticketType").value, 10) !== 4);
   updatePrice();
 }
 function updatePrice() {
@@ -514,6 +524,7 @@ function updatePrice() {
 function updateDisplay() {
   document.getElementById("balance").textContent = cardLoaded ? card.balance + " Kč" : "?";
   document.getElementById("viewUid").textContent = cardUid;
+  document.getElementById("viewUid2").textContent = cardUid;
   document.getElementById("viewBalance").textContent = cardLoaded ? card.balance + " Kč" : "-";
   document.getElementById("viewTicket").textContent = TICKET_NAMES[card.ticketType] || "Žádná";
   document.getElementById("viewZones").textContent = card.zones ? String(card.zones) : "-";
@@ -539,12 +550,10 @@ async function initNFC() {
     setStatus("NFC zamítnuto nebo chyba: " + err, "error");
   }
 }
-
 async function writeCard() {
   if (!ndef) throw new Error("NFC není inicializované");
   await ndef.write({ records: [{ recordType: "mime", mediaType: MIME_TYPE, data: encodeCard(card) }] });
 }
-
 async function handleReading(event) {
   if (busy) return;
   busy = true;
@@ -655,7 +664,6 @@ function startVerify() {
   pendingAction = "verify";
   setStatus("Přiložte kartu k ověření jízdenky.", "info");
 }
-
 function pressKey(d) {
   const i = document.getElementById("amountInput");
   i.value = (i.value === "0" || i.value === "") ? String(d) : i.value + d;
@@ -666,6 +674,7 @@ function backspace() { const i = document.getElementById("amountInput"); i.value
 document.getElementById("startNFC").addEventListener("click", initNFC);
 initZoneSelect();
 onTicketTypeChange();
+updatePrice();
 updateDisplay();
 logMsg("Aplikace spuštěna.");
 </script>
